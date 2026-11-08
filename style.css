@@ -6,7 +6,7 @@
   --panel: #ffffff;
   --text: #151a2e;
   --muted: #5b6278;
-  --accent: #17853d;
+  --accent: #147d4c;
   --border: #dde1ec;
   --chip: #e8eaf3;
 }
@@ -62,11 +62,19 @@ header.site {
 }
 
 header.site a.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.04em;
   margin-right: auto;
+}
+
+header.site a.brand img {
+  width: 30px;
+  height: 30px;
 }
 
 .scheme-switch {
