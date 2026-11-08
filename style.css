@@ -1,11 +1,41 @@
 :root {
+  color-scheme: light dark;
+  --bg: #f5f6fb;
+  --panel: #ffffff;
+  --text: #151a2e;
+  --muted: #5b6278;
+  --accent: #17853d;
+  --border: #dde1ec;
+  --chip: #e8eaf3;
+}
+
+/* Dark: for a dark system unless the visitor picked light, or whenever they picked dark
+   (html[data-scheme], set by scheme.js). Keep both blocks equal. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-scheme="light"]) {
+    color-scheme: dark;
+    --bg: #0b0e1a;
+    --panel: #131829;
+    --text: #e6e8f0;
+    --muted: #9aa1b8;
+    --accent: #5ad278;
+    --border: #252c45;
+    --chip: #1b2138;
+  }
+}
+
+:root[data-scheme="dark"] {
+  color-scheme: dark;
   --bg: #0b0e1a;
   --panel: #131829;
   --text: #e6e8f0;
   --muted: #9aa1b8;
   --accent: #5ad278;
   --border: #252c45;
+  --chip: #1b2138;
 }
+
+:root[data-scheme="light"] { color-scheme: light; }
 
 * { box-sizing: border-box; }
 
@@ -22,7 +52,8 @@ a { color: var(--accent); }
 
 header.site {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid var(--border);
@@ -33,6 +64,37 @@ header.site a.brand {
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.04em;
+  margin-right: auto;
+}
+
+.scheme-switch {
+  display: flex;
+  margin-left: auto;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--chip);
+}
+
+.scheme-switch button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.scheme-switch button:hover { color: var(--text); }
+
+.scheme-switch button[aria-pressed="true"] {
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
 }
 
 main {
