@@ -1,3 +1,5 @@
+/* Pages link this as /style.css?v=N (and /scheme.js?v=N): bump N in every page after a change,
+   otherwise browsers keep the old file from cache for a while. */
 :root {
   color-scheme: light dark;
   --bg: #f5f6fb;
